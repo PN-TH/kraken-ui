@@ -12,7 +12,6 @@ export default function Home() {
         />
         <Button label="Primary Button" className="bg-blue-700 text-white" />
         <Button label="Disabled Button" disabled />
-        <Button label="Loading Button" isLoading />
       </div>
     </main>
   );
