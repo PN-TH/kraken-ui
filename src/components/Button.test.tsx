@@ -14,9 +14,9 @@ describe('Button Component', () => {
   });
 
   test('applies custom className', () => {
-    render(<Button label="Custom Button" className="custom-class" />);
+    render(<Button label="Custom Button" className="p-10" />);
     const buttonElement = screen.getByTestId('button');
-    expect(buttonElement).toHaveClass('custom-class');
+    expect(buttonElement).toHaveClass('p-10');
   });
 
   test('handles click events', () => {

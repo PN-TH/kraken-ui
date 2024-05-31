@@ -18,9 +18,9 @@ export default function Button({
 }: React.PropsWithChildren<IButtonProps>) {
   return (
     <button
-      className={`py-2 px-4 rounded ${
+      className={`rounded px-4 py-2 ${
         className ? className : 'bg-blue-500 text-white'
-      } ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+      } ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
       disabled={disabled}
       data-testid="button"
       {...props}
