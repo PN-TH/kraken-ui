@@ -51,7 +51,8 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix --max-warnings 0",
-      "jest --bail --findRelatedTests"
+      "jest --bail --findRelatedTests",
+      "prettier . --write --ignore-unknown --ignore-path .gitignore --ignore-path .prettier.ignore"
     ]
   }
 }
