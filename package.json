@@ -49,7 +49,9 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint . --fix --max-warnings=0 --ignore-path .gitignore --ignore-path .eslintignore",
-    "*": "prettier . --write --ignore-unknown --ignore-path .gitignore --ignore-path .prettier.ignore"
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix --max-warnings 0",
+      "jest --bail --findRelatedTests"
+    ]
   }
 }
