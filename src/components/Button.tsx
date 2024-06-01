@@ -1,11 +1,13 @@
 import React from 'react';
-
+import Loader, { LoaderProps } from './Loader/Loader';
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label?: string;
   className?: string;
   icon?: React.ReactNode;
   isLoading?: boolean;
   disabled?: boolean;
+  containerClassName?: string;
+  loaderProps?: LoaderProps;
 }
 
 export default function Button({
@@ -14,6 +16,8 @@ export default function Button({
   icon,
   isLoading,
   disabled,
+  containerClassName = 'flex items-center justify-center gap-2',
+  loaderProps = { color: '#fa0000', size: 'small' },
   ...props
 }: React.PropsWithChildren<IButtonProps>) {
   return (
@@ -26,12 +30,15 @@ export default function Button({
       {...props}
     >
       {isLoading ? (
-        <span className="loader"></span> // Ajoutez ici votre propre composant de chargement ou style
-      ) : (
-        <>
-          {icon && <span className="icon">{icon}</span>}
+        <div className={containerClassName}>
           {label && <span>{label}</span>}
-        </>
+          <Loader {...loaderProps} />
+        </div>
+      ) : (
+        <div className={containerClassName}>
+          {label && <span>{label}</span>}
+          {icon && <span>{icon}</span>}
+        </div>
       )}
     </button>
   );

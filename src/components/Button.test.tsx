@@ -4,47 +4,44 @@ import '@testing-library/jest-dom';
 import Button from './Button';
 
 describe('Button Component', () => {
-  test('renders with default styles', () => {
-    render(<Button label="Default Button" />);
+  test('renders button with label', () => {
+    render(<Button label="Click Me" />);
     const buttonElement = screen.getByTestId('button');
     expect(buttonElement).toBeInTheDocument();
-    expect(buttonElement).toHaveClass(
-      'py-2 px-4 bg-blue-500 text-white rounded',
-    );
+    expect(buttonElement).toHaveTextContent('Click Me');
   });
 
-  test('applies custom className', () => {
-    render(<Button label="Custom Button" className="p-10" />);
+  test('renders button with custom className', () => {
+    render(<Button label="Click Me" className="w-10" />);
     const buttonElement = screen.getByTestId('button');
-    expect(buttonElement).toHaveClass('p-10');
+    expect(buttonElement).toHaveClass('w-10');
   });
 
-  test('handles click events', () => {
+  test('renders button with icon', () => {
+    render(<Button label="Click Me" icon={<span>Icon</span>} />);
+    const buttonElement = screen.getByTestId('button');
+    expect(buttonElement).toHaveTextContent('Click Me');
+    expect(screen.getByText('Icon')).toBeInTheDocument();
+  });
+
+  test('renders loader when isLoading is true', () => {
+    render(<Button label="Loading" isLoading />);
+    const loaderElement = screen.getByTestId('loader');
+    expect(loaderElement).toBeInTheDocument();
+  });
+
+  test('applies disabled state', () => {
+    render(<Button label="Click Me" disabled />);
+    const buttonElement = screen.getByTestId('button');
+    expect(buttonElement).toBeDisabled();
+    expect(buttonElement).toHaveClass('cursor-not-allowed opacity-50');
+  });
+
+  test('fires click event', () => {
     const handleClick = jest.fn();
     render(<Button label="Click Me" onClick={handleClick} />);
     const buttonElement = screen.getByTestId('button');
     fireEvent.click(buttonElement);
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
-
-  test('displays loading state', () => {
-    render(<Button label="Loading" isLoading />);
-    const buttonElement = screen.getByTestId('button');
-    expect(buttonElement).toContainHTML('<span class="loader"></span>');
-  });
-
-  test('disables the button', () => {
-    render(<Button label="Disabled" disabled />);
-    const buttonElement = screen.getByTestId('button');
-    expect(buttonElement).toBeDisabled();
-  });
-
-  // test('renders with an icon', () => {
-  //   render(
-  //     <Button label="With Icon" icon={<span className="icon">Icon</span>} />,
-  //   );
-  //   const buttonElement = screen.getByTestId('button');
-  //   const iconElement = screen.getByText(/icon/i);
-  //   expect(buttonElement).toContainElement(iconElement);
-  // });
 });

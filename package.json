@@ -8,10 +8,11 @@
     "start": "next start",
     "lint": "eslint 'src/**/*.{js,ts,jsx,tsx}'",
     "format": "prettier --write 'src/**/*.{js,ts,jsx,tsx}'",
-    "test": "jest --config jest.config.json",
+    "test": "jest",
     "prepare": "husky"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "eslint-plugin-tailwindcss": "^3.17.0",
     "next": "14.2.3",
     "react": "^18",

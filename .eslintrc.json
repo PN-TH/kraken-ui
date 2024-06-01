@@ -1,11 +1,16 @@
 {
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2020,
-    "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
   },
   "settings": {
     "react": {
@@ -20,6 +25,7 @@
     "plugin:prettier/recommended",
     "plugin:tailwindcss/recommended"
   ],
+
   "plugins": [
     "react",
     "@typescript-eslint",
