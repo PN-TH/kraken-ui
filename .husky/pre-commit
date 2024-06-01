@@ -3,4 +3,5 @@
 
 
 npx lint-staged
+npm run test
 echo "Now you can go have a beer 🍺"

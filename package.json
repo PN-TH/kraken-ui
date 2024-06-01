@@ -50,8 +50,12 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix --max-warnings 0",
-      "jest --bail --findRelatedTests"
+      "eslint --fix --max-warnings 0"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test"
+    }
   }
 }
